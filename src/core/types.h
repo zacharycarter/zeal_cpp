@@ -1,5 +1,5 @@
-#ifndef ZEAL_TYPES_H_HEADER_GUARD
-#define ZEAL_TYPES_H_HEADER_GUARD
+#ifndef ZEAL_CORE_TYPES_H_HEADER_GUARD
+#define ZEAL_CORE_TYPES_H_HEADER_GUARD
 
 #include "core/platform.h"
 #include <stdint.h>
@@ -14,8 +14,7 @@
 
 /// @defgroup Core Core
 
-namespace zeal
-{
+namespace zeal {
 /// @addtogroup Core
 /// @{
 typedef int8_t s8;
@@ -30,30 +29,22 @@ typedef float f32;
 typedef double f64;
 /// @}
 
-template <typename T>
-inline void exchange(T &a, T &b)
-{
-	T c = a;
-	a = b;
-	b = c;
+template <typename T> inline void exchange(T &a, T &b) {
+  T c = a;
+  a = b;
+  b = c;
 }
 
-template <typename T>
-inline T min(const T &a, const T &b)
-{
-	return a < b ? a : b;
+template <typename T> inline T min(const T &a, const T &b) {
+  return a < b ? a : b;
 }
 
-template <typename T>
-inline T max(const T &a, const T &b)
-{
-	return a > b ? a : b;
+template <typename T> inline T max(const T &a, const T &b) {
+  return a > b ? a : b;
 }
 
-template <typename T>
-inline T clamp(T val, T mmin, T mmax)
-{
-	return min(max(mmin, val), mmax);
+template <typename T> inline T clamp(T val, T mmin, T mmax) {
+  return min(max(mmin, val), mmax);
 }
 
 } // namespace zeal
@@ -62,17 +53,16 @@ inline T clamp(T val, T mmin, T mmax)
 #define NULL 0
 #endif
 
-#define ZE_NOOP(...) \
-	do               \
-	{                \
-		(void)0;     \
-	} while (0)
-#define ZE_UNUSED(x) \
-	do               \
-	{                \
-		(void)(x);   \
-	} while (0)
-#define ZE_STATIC_ASSERT(condition, ...) static_assert(condition, "" #__VA_ARGS__)
+#define ZE_NOOP(...)                                                           \
+  do {                                                                         \
+    (void)0;                                                                   \
+  } while (0)
+#define ZE_UNUSED(x)                                                           \
+  do {                                                                         \
+    (void)(x);                                                                 \
+  } while (0)
+#define ZE_STATIC_ASSERT(condition, ...)                                       \
+  static_assert(condition, "" #__VA_ARGS__)
 
 #if ZEAL_PLATFORM_LINUX || ZEAL_PLATFORM_OSX
 #define ZE_ALIGN_DECL(align, decl) decl __attribute__((aligned(align)))
@@ -80,4 +70,4 @@ inline T clamp(T val, T mmin, T mmax)
 #define ZE_ALIGN_DECL(align_, decl) __declspec(align(align_)) decl
 #endif
 
-#endif // ZEAL_TYPES_H_HEADER_GUARD
+#endif // ZEAL_CORE_TYPES_H_HEADER_GUARD

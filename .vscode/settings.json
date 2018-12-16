@@ -1,5 +1,8 @@
 {
     "cmake.configureOnOpen": false,
     "C_Cpp.configurationWarnings": "Disabled",
-    "C_Cpp.intelliSenseEngineFallback": "Disabled"
+    "C_Cpp.intelliSenseEngineFallback": "Disabled",
+    "files.associations": {
+        "iostream": "cpp"
+    }
 }

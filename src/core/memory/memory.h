@@ -86,7 +86,10 @@ inline T &construct(void *p, Allocator & /*a*/, Int2Type<false>)
 	return *(T *)p;
 }
 template <typename T>
-inline T &construct(void *p, Allocator &a) { return construct<T>(p, a, IS_ALLOCATOR_AWARE_TYPE(T)()); }
+inline T &construct(void *p, Allocator &a)
+{
+	return construct<T>(p, a, IS_ALLOCATOR_AWARE_TYPE(T)());
+}
 
 namespace memory_globals
 {
@@ -103,5 +106,18 @@ void shutdown();
 } // namespace memory_globals
 
 } // namespace zeal
+
+/// Allocates memory with @a allocator for the given @a T type
+/// and calls constructor on it.
+/// @note
+/// @a allocator must be a reference to an existing allocator.
+#define ZE_NEW(allocator, T) new ((allocator).allocate(sizeof(T), alignof(T))) T
+
+/// Calls destructor on @a ptr and deallocates memory using the
+/// given @a allocator.
+/// @note
+/// @a allocator must be a reference to an existing allocator.
+#define ZE_DELETE(allocator, ptr) \
+	zeal::memory::call_destructor_and_deallocate(allocator, ptr)
 
 #endif // ZEAL_MEMORY_H_HEADER_GUARD
