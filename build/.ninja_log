@@ -1,0 +1,6 @@
+# ninja log v5
+2	94	1544946473	src/CMakeFiles/zeal.dir/core/murmur.cpp.o	746bb2095da2ec04
+3	164	1544946473	src/CMakeFiles/zeal.dir/device/device.cpp.o	a7e818ced1988657
+1	168	1544946473	src/CMakeFiles/zeal.dir/core/memory/linear_allocator.cpp.o	5e13535f0401f53f
+1	189	1544946473	src/CMakeFiles/zeal.dir/core/memory/memory.cpp.o	d52b2fd671cc31cd
+1	142	1544946496	src/CMakeFiles/zeal.dir/core/strings/string_id.cpp.o	3d8f3b615a8be5c1

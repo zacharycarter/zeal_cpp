@@ -3,8 +3,7 @@
 
 /// @defgroup Memory Memory
 /// @ingroup Core
-namespace zeal
-{
+namespace zeal {
 struct Allocator;
 
 }; // namespace zeal

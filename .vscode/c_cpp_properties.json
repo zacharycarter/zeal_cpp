@@ -3,9 +3,15 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/zeal/include",
-                "${workspaceFolder}/zeal/src",
-                "${workspaceFolder}/src"
+                "/usr/include",
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/src/core",
+                "${workspaceFolder}/src/core/containers",
+                "${workspaceFolder}/src/core/error",
+                "${workspaceFolder}/src/core/memory",
+                "${workspaceFolder}/src/core/strings",
+                "${workspaceFolder}/src/core/thread",
+                "${workspaceFolder}/src/device"
             ],
             "defines": [],
             "macFrameworkPath": [
@@ -14,8 +20,9 @@
             ],
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c11",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "clang-x64"
+            "cppStandard": "c++14",
+            "intelliSenseMode": "clang-x64",
+            "configurationProvider": "vector-of-bool.cmake-tools"
         }
     ],
     "version": 4

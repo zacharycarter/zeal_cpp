@@ -10,7 +10,7 @@
 
 namespace zeal
 {
-inline s32 vsnprintf(char* str, size_t num, const char* format, va_list args)
+inline s32 vsnprintf(char *str, size_t num, const char *format, va_list args)
 {
 #if ZEAL_COMPILER_MSVC
 	s32 len = _vsnprintf_s(str, num, _TRUNCATE, format, args);
@@ -20,7 +20,7 @@ inline s32 vsnprintf(char* str, size_t num, const char* format, va_list args)
 #endif // ZEAL_COMPILER_MSVC
 }
 
-inline s32 snprintf(char* str, size_t n, const char* format, ...)
+inline s32 snprintf(char *str, size_t n, const char *format, ...)
 {
 	va_list args;
 	va_start(args, format);
@@ -29,24 +29,26 @@ inline s32 snprintf(char* str, size_t n, const char* format, ...)
 	return len;
 }
 
-inline u32 strlen32(const char* str)
+inline u32 strlen32(const char *str)
 {
 	return (u32)strlen(str);
 }
 
-inline const char* skip_spaces(const char* str)
+inline const char *skip_spaces(const char *str)
 {
-	while (isspace(*str)) ++str;
+	while (isspace(*str))
+		++str;
 	return str;
 }
 
-inline const char* skip_block(const char* str, char a, char b)
+inline const char *skip_block(const char *str, char a, char b)
 {
 	u32 num = 0;
 
 	for (char ch = *str++; ch != '\0'; ch = *str++)
 	{
-		if (ch == a) ++num;
+		if (ch == a)
+			++num;
 		else if (ch == b)
 		{
 			if (--num == 0)
@@ -60,9 +62,9 @@ inline const char* skip_block(const char* str, char a, char b)
 }
 
 /// Returns pointer after EOL.
-inline const char* strnl(const char* str)
+inline const char *strnl(const char *str)
 {
-	const char* eol = strchr(str, '\n');
+	const char *eol = strchr(str, '\n');
 	return eol ? eol + 1 : str + strlen(str);
 }
 
@@ -85,8 +87,8 @@ inline int wildcmp(const char *wild, const char *str)
 		{
 			if (!*++wild)
 				return 1;
-		  mp = wild;
-		  cp = str + 1;
+			mp = wild;
+			cp = str + 1;
 		}
 		else if (*wild == *str || *wild == '?')
 		{
