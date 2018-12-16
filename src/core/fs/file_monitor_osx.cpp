@@ -112,11 +112,11 @@ https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_
 
     void stop()
     {
-        _thread.stop();
         FSEventStreamStop(_stream);
         FSEventStreamInvalidate(_stream);
         FSEventStreamRelease(_stream);
         CFRelease(_watches);
+        _thread.stop();
         ZE_DELETE(*_allocator, _context);
     }
 
