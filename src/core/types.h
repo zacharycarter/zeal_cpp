@@ -14,7 +14,8 @@
 
 /// @defgroup Core Core
 
-namespace zeal {
+namespace zeal
+{
 /// @addtogroup Core
 /// @{
 typedef int8_t s8;
@@ -29,21 +30,29 @@ typedef float f32;
 typedef double f64;
 /// @}
 
-template <typename T> inline void exchange(T &a, T &b) {
+template <typename T>
+inline void exchange(T &a, T &b)
+{
   T c = a;
   a = b;
   b = c;
 }
 
-template <typename T> inline T min(const T &a, const T &b) {
+template <typename T>
+inline T min(const T &a, const T &b)
+{
   return a < b ? a : b;
 }
 
-template <typename T> inline T max(const T &a, const T &b) {
+template <typename T>
+inline T max(const T &a, const T &b)
+{
   return a > b ? a : b;
 }
 
-template <typename T> inline T clamp(T val, T mmin, T mmax) {
+template <typename T>
+inline T clamp(T val, T mmin, T mmax)
+{
   return min(max(mmin, val), mmax);
 }
 
@@ -53,15 +62,20 @@ template <typename T> inline T clamp(T val, T mmin, T mmax) {
 #define NULL 0
 #endif
 
-#define ZE_NOOP(...)                                                           \
-  do {                                                                         \
-    (void)0;                                                                   \
+#define countof(arr) (sizeof(arr) / sizeof(arr[0]))
+#define container_of(ptr, type, member) ((char *)ptr - offsetof(type, member))
+
+#define ZE_NOOP(...) \
+  do                 \
+  {                  \
+    (void)0;         \
   } while (0)
-#define ZE_UNUSED(x)                                                           \
-  do {                                                                         \
-    (void)(x);                                                                 \
+#define ZE_UNUSED(x) \
+  do                 \
+  {                  \
+    (void)(x);       \
   } while (0)
-#define ZE_STATIC_ASSERT(condition, ...)                                       \
+#define ZE_STATIC_ASSERT(condition, ...) \
   static_assert(condition, "" #__VA_ARGS__)
 
 #if ZEAL_PLATFORM_LINUX || ZEAL_PLATFORM_OSX

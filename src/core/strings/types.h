@@ -3,7 +3,8 @@
 
 #include "core/containers/types.h"
 
-namespace zeal {
+namespace zeal
+{
 struct DynamicString;
 struct FixedString;
 struct StringId32;
@@ -14,7 +15,7 @@ typedef StringId64 ResourceId;
 /// Stream of characters.
 ///
 /// @ingroup String
-// typedef Array<char> StringStream;
+typedef Array<char> StringStream;
 
 } // namespace zeal
 

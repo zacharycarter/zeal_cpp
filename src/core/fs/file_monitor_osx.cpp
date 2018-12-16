@@ -42,10 +42,10 @@ struct FileMonitorImpl
     FileMonitorImpl(Allocator &a)
         : _allocator(&a), _function(NULL), _user_data(NULL) {}
 
-    void watch(ConstFSEventStreamRef streamRef, void *clientCallBackInfo,
-               size_t numEvents, void *eventPaths,
-               const FSEventStreamEventFlags eventFlags[],
-               const FSEventStreamEventId eventIds[])
+    static void watch(ConstFSEventStreamRef streamRef, void *clientCallBackInfo,
+                      size_t numEvents, void *eventPaths,
+                      const FSEventStreamEventFlags eventFlags[],
+                      const FSEventStreamEventId eventIds[])
     {
 
         using namespace std;
@@ -86,7 +86,7 @@ struct FileMonitorImpl
         _context->copyDescription = nullptr;
 
         _stream = FSEventStreamCreate(
-            NULL, &this->watch,
+            NULL, &FileMonitorImpl::watch,
             _context,                                // could put stream-specific data here.
                                                      // FSEventStreamRef stream;*/
             _watches, kFSEventStreamEventIdSinceNow, /* Or a previous event ID */
