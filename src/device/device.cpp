@@ -1,6 +1,9 @@
 #include "device/device.h"
 #include "config.h"
 #include "core/containers/array.h"
+#include "core/fs/file.h"
+#include "core/fs/filesystem.h"
+#include "core/fs/filesystem_disk.h"
 #include "core/fs/path.h"
 #include "core/memory/memory.h"
 #include "core/memory/temp_allocator.h"
@@ -20,9 +23,9 @@ namespace zeal
 Device::Device(const DeviceOptions &opts, ConsoleServer &cs)
 	: _allocator(default_allocator(), MAX_SUBSYSTEMS_HEAP),
 	  _device_options(opts), _console_server(&cs), _width(0), _height(0),
-	  _quit(false), _paused(false)
-{
-}
+	  _quit(false), _paused(false) {}
+
+void Device::run() {}
 
 void Device::log(const char *msg)
 {

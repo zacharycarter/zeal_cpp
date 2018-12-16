@@ -3,6 +3,7 @@
 #if ZEAL_PLATFORM_OSX
 
 #include "device/device.h"
+#include "resource/data_compiler.h"
 #import <Cocoa/Cocoa.h>
 
 namespace zeal {} // namespace zeal

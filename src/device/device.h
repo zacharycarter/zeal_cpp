@@ -68,6 +68,9 @@ struct Device
 /// Runs the engine.
 void run(const DeviceOptions &opts);
 
+/// Returns the device.
+Device *device();
+
 } // namespace zeal
 
 #endif // ZEAL_DEVICE_H_HEADER_GUARD

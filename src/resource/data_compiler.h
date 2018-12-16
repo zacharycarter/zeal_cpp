@@ -9,4 +9,10 @@
 #include "resource/types.h"
 #include <setjmp.h>
 
+namespace zeal
+{
+int main_data_compiler(const DeviceOptions &opts);
+
+} // namespace zeal
+
 #endif // ZEAL_DATA_COMPILER_H_HEADER_GUARD
