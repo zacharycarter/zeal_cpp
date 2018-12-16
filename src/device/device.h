@@ -8,7 +8,9 @@
 #include "core/memory/linear_allocator.h"
 #include "core/strings/string_id.h"
 #include "core/types.h"
+#include "device/console_server.h"
 #include "device/device_options.h"
+#include "resource/types.h"
 
 /// @defgroup Device Device
 namespace zeal
@@ -22,6 +24,8 @@ struct Device
     LinearAllocator _allocator;
 
     const DeviceOptions &_device_options;
+    ConsoleServer *_console_server;
+    File *_last_log;
 
     u16 _width;
     u16 _height;
@@ -30,6 +34,11 @@ struct Device
     bool _paused;
 
     bool process_events(bool vsync);
+
+    ///
+    Device(const DeviceOptions &opts, ConsoleServer &cs);
+    Device(const Device &) = delete;
+    Device &operator=(const Device &) = delete;
 
     /// Runs the engine.
     void run();
@@ -51,6 +60,9 @@ struct Device
 
     /// Returns the main window resolution.
     void resolution(u16 &width, u16 &height);
+
+    /// Logs @a msg to log file and console.
+    void log(const char *msg);
 };
 
 /// Runs the engine.
