@@ -99,10 +99,7 @@ struct Map
 		u32 parent;
 		u32 color;
 
-		Node(Allocator &a)
-			: pair(a)
-		{
-		}
+		Node(Allocator &a) : pair(a) {}
 	};
 
 	u32 _root;
@@ -116,7 +113,8 @@ struct Map
 /// Hash map.
 ///
 /// @ingroup Containers
-template <typename TKey, typename TValue, typename Hash = hash<TKey>, typename KeyEqual = equal_to<TKey>>
+template <typename TKey, typename TValue, typename Hash = hash<TKey>,
+		  typename KeyEqual = equal_to<TKey>>
 struct HashMap
 {
 	ALLOCATOR_AWARE;
@@ -144,7 +142,8 @@ struct HashMap
 /// Hash set.
 ///
 /// @ingroup Containers
-template <typename TKey, typename Hash = hash<TKey>, typename KeyEqual = equal_to<TKey>>
+template <typename TKey, typename Hash = hash<TKey>,
+		  typename KeyEqual = equal_to<TKey>>
 struct HashSet
 {
 	ALLOCATOR_AWARE;
@@ -182,7 +181,7 @@ struct SortMap
 	typedef PAIR(TKey, TValue) Entry;
 
 	Vector<Entry> _data;
-#if CROWN_DEBUG
+#if ZEAL_DEBUG
 	bool _is_sorted;
 #endif
 

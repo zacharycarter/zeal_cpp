@@ -70,7 +70,7 @@ void *library_symbol(void *library, const char *name)
 void log(const char *msg)
 {
 #if ZEAL_PLATFORM_ANDROID
-    __android_log_write(ANDROID_LOG_DEBUG, "crown", msg);
+    __android_log_write(ANDROID_LOG_DEBUG, "zeal", msg);
 #elif ZEAL_PLATFORM_WINDOWS
     OutputDebugStringA(msg);
 #else
