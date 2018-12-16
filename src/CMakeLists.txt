@@ -1,6 +1,5 @@
-add_library (zeal zeal.cpp ${CMAKE_CURRENT_SOURCE_DIR}/../include/zeal/c99/zeal.h)
-target_include_directories (zeal PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include )
+file(GLOB_RECURSE libsrc *.h *.cpp *.hpp *.c *.cc *.mm)
 
-add_library(zeal_shared SHARED zeal.cpp ${CMAKE_CURRENT_SOURCE_DIR}/../include/zeal/c99/zeal.h)
-target_link_libraries(zeal_shared)
-target_include_directories(zeal_shared PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+add_executable (zeal ${libsrc})
+target_include_directories (zeal PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(zeal "-framework Cocoa")

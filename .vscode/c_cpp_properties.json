@@ -3,7 +3,9 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/zeal/include"
+                "${workspaceFolder}/zeal/include",
+                "${workspaceFolder}/zeal/src",
+                "${workspaceFolder}/src"
             ],
             "defines": [],
             "macFrameworkPath": [
