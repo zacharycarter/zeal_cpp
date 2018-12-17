@@ -4,6 +4,7 @@
             "name": "Mac",
             "includePath": [
                 "/usr/include",
+                "/usr/local/include/luajit-2.0",
                 "${workspaceFolder}/src",
                 "${workspaceFolder}/src/core",
                 "${workspaceFolder}/src/core/containers",

@@ -10,6 +10,7 @@
 #include "core/types.h"
 #include "device/console_server.h"
 #include "device/device_options.h"
+#include "lua/types.h"
 #include "resource/types.h"
 
 /// @defgroup Device Device
@@ -26,6 +27,7 @@ struct Device
     const DeviceOptions &_device_options;
     ConsoleServer *_console_server;
     File *_last_log;
+    LuaEnvironment *_lua_environment;
 
     u16 _width;
     u16 _height;
