@@ -27,6 +27,8 @@ struct Device
     const DeviceOptions &_device_options;
     ConsoleServer *_console_server;
     File *_last_log;
+    ResourceLoader *_resource_loader;
+    ResourceManager *_resource_manager;
     LuaEnvironment *_lua_environment;
 
     u16 _width;
@@ -62,6 +64,9 @@ struct Device
 
     /// Returns the main window resolution.
     void resolution(u16 &width, u16 &height);
+
+    /// Reloads the resource @a type @a name.
+    void reload(StringId64 type, StringId64 name);
 
     /// Logs @a msg to log file and console.
     void log(const char *msg);

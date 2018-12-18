@@ -17,4 +17,4 @@ f64 seconds(s64 ticks);
 
 } // namespace zeal
 
-#endif ZEAL_TIME_H_HEADER_GUARD
+#endif // ZEAL_TIME_H_HEADER_GUARD

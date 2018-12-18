@@ -3,6 +3,7 @@
 
 #include "core/fs/types.h"
 #include "core/memory/types.h"
+#include "core/types.h"
 #include "resource/types.h"
 
 namespace zeal

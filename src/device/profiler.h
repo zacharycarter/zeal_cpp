@@ -116,6 +116,6 @@ void clear();
 #define RECORD_VECTOR3(name, value) ZE_NOOP()
 #define ALLOCATE_MEMORY(name, size) ZE_NOOP()
 #define DEALLOCATE_MEMORY(name, size) ZE_NOOP()
-#endif // CROWN_DEBUG
+#endif // ZEAL_DEBUG
 
 #endif // ZEAL_PROFILER_H_HEADER_GUARD

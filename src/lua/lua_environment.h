@@ -22,14 +22,14 @@ struct LuaEnvironment
 {
     lua_State *L;
 
-#define LUA_MAX_VECTOR3 (CROWN_LUA_MAX_VECTOR3_SIZE / sizeof(Vector3))
-    CE_STATIC_ASSERT(CROWN_LUA_MAX_VECTOR3_SIZE % sizeof(Vector3) == 0);
+#define LUA_MAX_VECTOR3 (ZEAL_LUA_MAX_VECTOR3_SIZE / sizeof(Vector3))
+    ZE_STATIC_ASSERT(ZEAL_LUA_MAX_VECTOR3_SIZE % sizeof(Vector3) == 0);
 
-#define LUA_MAX_QUATERNION (CROWN_LUA_MAX_QUATERNION_SIZE / sizeof(Quaternion))
-    CE_STATIC_ASSERT(CROWN_LUA_MAX_QUATERNION_SIZE % sizeof(Quaternion) == 0);
+#define LUA_MAX_QUATERNION (ZEAL_LUA_MAX_QUATERNION_SIZE / sizeof(Quaternion))
+    ZE_STATIC_ASSERT(ZEAL_LUA_MAX_QUATERNION_SIZE % sizeof(Quaternion) == 0);
 
-#define LUA_MAX_MATRIX4X4 (CROWN_LUA_MAX_MATRIX4X4_SIZE / sizeof(Matrix4x4))
-    CE_STATIC_ASSERT(CROWN_LUA_MAX_MATRIX4X4_SIZE % sizeof(Matrix4x4) == 0);
+#define LUA_MAX_MATRIX4X4 (ZEAL_LUA_MAX_MATRIX4X4_SIZE / sizeof(Matrix4x4))
+    ZE_STATIC_ASSERT(ZEAL_LUA_MAX_MATRIX4X4_SIZE % sizeof(Matrix4x4) == 0);
 
     u32 _num_vec3;
     Vector3 _vec3[LUA_MAX_VECTOR3];
@@ -52,13 +52,18 @@ struct LuaEnvironment
     /// Executes the @a lua string.
     LuaStack execute_string(const char *lua);
 
-    /// Adds the function with the given @a name and @a func to the table @a module.
-    void add_module_function(const char *module, const char *name, const lua_CFunction func);
+    /// Adds the function with the given @a name and @a func to the table @a
+    /// module.
+    void add_module_function(const char *module, const char *name,
+                             const lua_CFunction func);
 
-    /// Adds the function with the given @a name and @a func to the table @a module.
-    void add_module_function(const char *module, const char *name, const char *func);
+    /// Adds the function with the given @a name and @a func to the table @a
+    /// module.
+    void add_module_function(const char *module, const char *name,
+                             const char *func);
 
-    void add_module_metafunction(const char *module, const char *name, const lua_CFunction func);
+    void add_module_metafunction(const char *module, const char *name,
+                                 const lua_CFunction func);
 
     /// Calls the global function @a func with @a argc argument number.
     /// Each argument is a pair (type, value).

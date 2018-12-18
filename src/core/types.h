@@ -78,6 +78,16 @@ inline T clamp(T val, T mmin, T mmax)
 #define ZE_STATIC_ASSERT(condition, ...) \
   static_assert(condition, "" #__VA_ARGS__)
 
+#if defined(__GNUC__)
+#define ZE_LIKELY(x) __builtin_expect((x), 1)
+#define ZE_UNLIKELY(x) __builtin_expect((x), 0)
+#define ZE_UNREACHABLE() __builtin_unreachable()
+#else
+#define ZE_LIKELY(x) (x)
+#define ZE_UNLIKELY(x) (x)
+#define ZE_UNREACHABLE()
+#endif
+
 #if ZEAL_PLATFORM_LINUX || ZEAL_PLATFORM_OSX
 #define ZE_ALIGN_DECL(align, decl) decl __attribute__((aligned(align)))
 #elif ZEAL_PLATFORM_WINDOWS

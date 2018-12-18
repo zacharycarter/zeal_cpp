@@ -226,28 +226,28 @@ inline T *end(Array<T> &a) { return a._data + a._size; }
 template <typename T>
 inline T &front(Array<T> &a)
 {
-	CE_ASSERT(a._size > 0, "The array is empty");
+	ZE_ASSERT(a._size > 0, "The array is empty");
 	return a._data[0];
 }
 
 template <typename T>
 inline const T &front(const Array<T> &a)
 {
-	CE_ASSERT(a._size > 0, "The array is empty");
+	ZE_ASSERT(a._size > 0, "The array is empty");
 	return a._data[0];
 }
 
 template <typename T>
 inline T &back(Array<T> &a)
 {
-	CE_ASSERT(a._size > 0, "The array is empty");
+	ZE_ASSERT(a._size > 0, "The array is empty");
 	return a._data[a._size - 1];
 }
 
 template <typename T>
 inline const T &back(const Array<T> &a)
 {
-	CE_ASSERT(a._size > 0, "The array is empty");
+	ZE_ASSERT(a._size > 0, "The array is empty");
 	return a._data[a._size - 1];
 }
 

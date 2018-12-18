@@ -15,6 +15,7 @@
 #include "core/types.h"
 #include "device/console_server.h"
 #include "device/log.h"
+#include "lua/lua_environment.h"
 
 #define MAX_SUBSYSTEMS_HEAP 8 * 1024 * 1024
 
@@ -24,7 +25,8 @@ namespace zeal
 {
 Device::Device(const DeviceOptions &opts, ConsoleServer &cs)
 	: _allocator(default_allocator(), MAX_SUBSYSTEMS_HEAP),
-	  _device_options(opts), _console_server(&cs), _lua_environment(NULL),
+	  _device_options(opts), _console_server(&cs), _last_log(NULL),
+	  _resource_loader(NULL), _resource_manager(NULL), _lua_environment(NULL),
 	  _width(0), _height(0), _quit(false), _paused(false) {}
 
 static void console_command_script(ConsoleServer & /*cs*/, TCPSocket /*client*/,
@@ -84,6 +86,18 @@ void Device::run()
 							_device_options._wait_console);
 }
 
+void Device::pause()
+{
+	_paused = true;
+	logi(DEVICE, "Paused");
+}
+
+void Device::unpause()
+{
+	_paused = false;
+	logi(DEVICE, "Unpaused");
+}
+
 void Device::reload(StringId64 type, StringId64 name)
 {
 	StringId64 mix;
@@ -93,15 +107,15 @@ void Device::reload(StringId64 type, StringId64 name)
 	DynamicString path(ta);
 	mix.to_string(path);
 
-	logi(DEVICE, "Reloading #ID(%s)", path.c_str());
+	// logi(DEVICE, "Reloading #ID(%s)", path.c_str());
 
-	_resource_manager->reload(type, name);
-	const void *new_resource = _resource_manager->get(type, name);
+	// _resource_manager->reload(type, name);
+	// const void *new_resource = _resource_manager->get(type, name);
 
-	if (type == RESOURCE_TYPE_SCRIPT)
-	{
-		_lua_environment->execute((const LuaResource *)new_resource);
-	}
+	// if (type == RESOURCE_TYPE_SCRIPT)
+	// {
+	// 	_lua_environment->execute((const LuaResource *)new_resource);
+	// }
 
 	logi(DEVICE, "Reloaded #ID(%s)", path.c_str());
 }
@@ -121,7 +135,7 @@ Device *_device = NULL;
 
 void run(const DeviceOptions &opts)
 {
-	ZE_ASSERT(_device == NULL, "Crown already initialized");
+	ZE_ASSERT(_device == NULL, "Zeal already initialized");
 	console_server_globals::init();
 	_device = new (_buffer) Device(opts, *console_server());
 	_device->run();

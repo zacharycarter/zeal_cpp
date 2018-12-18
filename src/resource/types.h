@@ -4,7 +4,11 @@
 /// @defgroup Resource Resource
 namespace zeal
 {
+struct CompileOptions;
 struct DataCompiler;
+struct ResourceLoader;
+struct ResourceManager;
+struct ResourcePackage;
 
 struct LuaResource;
 

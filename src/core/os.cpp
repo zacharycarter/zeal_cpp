@@ -120,8 +120,8 @@ void delete_file(const char *path)
     ZE_UNUSED(err);
 #elif ZEAL_PLATFORM_WINDOWS
     BOOL err = DeleteFile(path);
-    CE_ASSERT(err != 0, "DeleteFile: GetLastError = %d", GetLastError());
-    CE_UNUSED(err);
+    ZE_ASSERT(err != 0, "DeleteFile: GetLastError = %d", GetLastError());
+    ZE_UNUSED(err);
 #endif
 }
 
@@ -133,8 +133,8 @@ void create_directory(const char *path)
     ZE_UNUSED(err);
 #elif ZEAL_PLATFORM_WINDOWS
     BOOL err = CreateDirectory(path, NULL);
-    CE_ASSERT(err != 0, "CreateDirectory: GetLastError = %d", GetLastError());
-    CE_UNUSED(err);
+    ZE_ASSERT(err != 0, "CreateDirectory: GetLastError = %d", GetLastError());
+    ZE_UNUSED(err);
 #endif
 }
 
@@ -146,8 +146,8 @@ void delete_directory(const char *path)
     ZE_UNUSED(err);
 #elif ZEAL_PLATFORM_WINDOWS
     BOOL err = RemoveDirectory(path);
-    CE_ASSERT(err != 0, "RemoveDirectory: GetLastError = %d", GetLastError());
-    CE_UNUSED(err);
+    ZE_ASSERT(err != 0, "RemoveDirectory: GetLastError = %d", GetLastError());
+    ZE_UNUSED(err);
 #endif
 }
 
@@ -262,8 +262,8 @@ int execute_process(const char *const *argv, StringStream &output)
     int err =
         CreateProcess(argv[0], (LPSTR)string_stream::c_str(path), NULL, NULL,
                       FALSE, CREATE_NO_WINDOW, NULL, NULL, &info, &process);
-    CE_ASSERT(err != 0, "CreateProcess: GetLastError = %d", GetLastError());
-    CE_UNUSED(err);
+    ZE_ASSERT(err != 0, "CreateProcess: GetLastError = %d", GetLastError());
+    ZE_UNUSED(err);
 
     DWORD exitcode = 1;
     ::WaitForSingleObject(process.hProcess, INFINITE);
