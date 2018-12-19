@@ -61,7 +61,7 @@ void LuaEnvironment::load_libs()
     luaL_openlibs(L);
 
     // Register zeal libraries
-    // load_api(*this);
+    load_api(*this);
 
     // Override print to redirect output to logging system
     add_module_function("_G", "print", luaB_print);
