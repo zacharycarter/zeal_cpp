@@ -31,7 +31,7 @@ static void help(const char *msg = NULL)
         "  --compile                       Compile the project's source data.\n"
         "  --platform <platform>           Specify the target <platform> for "
         "data compilation.\n"
-        "      macOS\n"
+        "      macos\n"
         "  --continue                      Run the engine after data "
         "compilation.\n"
         "  --console-port <port>           Port for the console server to run "
@@ -99,8 +99,9 @@ int DeviceOptions::parse(bool *quit)
         if (!_platform)
             _platform = ZEAL_PLATFORM_NAME;
 
-        if (true && strcmp(_platform, "android") != 0 &&
-            strcmp(_platform, "linux") != 0 && strcmp(_platform, "windows") != 0)
+        // if (true && strcmp(_platform, "android") != 0 &&
+        //     strcmp(_platform, "linux") != 0 && strcmp(_platform, "windows") != 0)
+        if (true && strcmp(_platform, "macos") != 0)
         {
             help("Cannot compile for the given platform.");
             return EXIT_FAILURE;

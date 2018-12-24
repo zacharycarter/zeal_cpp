@@ -29,10 +29,7 @@ inline s32 snprintf(char *str, size_t n, const char *format, ...)
 	return len;
 }
 
-inline u32 strlen32(const char *str)
-{
-	return (u32)strlen(str);
-}
+inline u32 strlen32(const char *str) { return (u32)strlen(str); }
 
 inline const char *skip_spaces(const char *str)
 {

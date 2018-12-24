@@ -74,8 +74,6 @@ struct FileMonitorImpl
 
         CFArrayRef _watches = CFArrayCreate(NULL, (const void **)&dir, 1, NULL);
 
-        CFRelease(dir);
-
         CFAbsoluteTime latency = 3.0; /* Latency in seconds */
 
         _context = ZE_NEW(*_allocator, FSEventStreamContext);
@@ -115,7 +113,6 @@ https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_
         FSEventStreamStop(_stream);
         FSEventStreamInvalidate(_stream);
         FSEventStreamRelease(_stream);
-        CFRelease(_watches);
         _thread.stop();
         ZE_DELETE(*_allocator, _context);
     }

@@ -146,9 +146,9 @@ inline void sort(SortMap<TKey, TValue, Compare> &m)
 {
     std::sort(vector::begin(m._data), vector::end(m._data),
               sort_map_internal::CompareEntry<TKey, TValue, Compare>());
-#if CROWN_DEBUG
+#if ZEAL_DEBUG
     m._is_sorted = true;
-#endif // CROWN_DEBUG
+#endif // ZEAL_DEBUG
 }
 
 template <typename TKey, typename TValue, typename Compare>
@@ -168,9 +168,9 @@ inline void set(SortMap<TKey, TValue, Compare> &m, const TKey &key,
     {
         m._data[result.item_i].second = val;
     }
-#if CROWN_DEBUG
+#if ZEAL_DEBUG
     m._is_sorted = false;
-#endif // CROWN_DEBUG
+#endif // ZEAL_DEBUG
 }
 
 template <typename TKey, typename TValue, typename Compare>
@@ -186,18 +186,18 @@ inline void remove(SortMap<TKey, TValue, Compare> &m, const TKey &key)
         m._data[result.item_i] = m._data[vector::size(m._data) - 1];
         vector::pop_back(m._data);
     }
-#if CROWN_DEBUG
+#if ZEAL_DEBUG
     m._is_sorted = false;
-#endif // CROWN_DEBUG
+#endif // ZEAL_DEBUG
 }
 
 template <typename TKey, typename TValue, typename Compare>
 inline void clear(SortMap<TKey, TValue, Compare> &m)
 {
     vector::clear(m._data);
-#if CROWN_DEBUG
+#if ZEAL_DEBUG
     m._is_sorted = true;
-#endif // CROWN_DEBUG
+#endif // ZEAL_DEBUG
 }
 
 template <typename TKey, typename TValue, typename Compare>

@@ -18,7 +18,7 @@
 #include "device/device_options.h"
 #include "device/log.h"
 #include "resource/compile_options.h"
-// #include "resource/config_resource.h"
+#include "resource/config_resource.h"
 // #include "resource/font_resource.h"
 // #include "resource/level_resource.h"
 #include "resource/lua_resource.h"
@@ -542,7 +542,7 @@ int main_data_compiler(const DeviceOptions &opts)
     console_server_globals::init();
     console_server()->listen(ZEAL_DEFAULT_COMPILER_PORT, opts._wait_console);
 
-    // namespace cor = config_resource_internal;
+    namespace cor = config_resource_internal;
     // namespace ftr = font_resource_internal;
     namespace lur = lua_resource_internal;
     // namespace lvr = level_resource_internal;
@@ -561,8 +561,8 @@ int main_data_compiler(const DeviceOptions &opts)
 
     DataCompiler *dc =
         ZE_NEW(default_allocator(), DataCompiler)(*console_server());
-    // dc->register_compiler(RESOURCE_TYPE_CONFIG, RESOURCE_VERSION_CONFIG,
-    //                       cor::compile);
+    dc->register_compiler(RESOURCE_TYPE_CONFIG, RESOURCE_VERSION_CONFIG,
+                          cor::compile);
     // dc->register_compiler(RESOURCE_TYPE_FONT, RESOURCE_VERSION_FONT,
     //                       ftr::compile);
     // dc->register_compiler(RESOURCE_TYPE_LEVEL, RESOURCE_VERSION_LEVEL,

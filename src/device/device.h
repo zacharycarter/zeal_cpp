@@ -8,14 +8,20 @@
 #include "core/memory/linear_allocator.h"
 #include "core/strings/string_id.h"
 #include "core/types.h"
+#include "device/boot_config.h"
 #include "device/console_server.h"
 #include "device/device_options.h"
+#include "device/display.h"
+#include "device/window.h"
 #include "lua/types.h"
 #include "resource/types.h"
 
 /// @defgroup Device Device
 namespace zeal
 {
+struct BgfxAllocator;
+struct BgfxCallback;
+
 /// This is the place to look for accessing all of
 /// the engine subsystems and related stuff.
 ///
@@ -25,11 +31,17 @@ struct Device
     LinearAllocator _allocator;
 
     const DeviceOptions &_device_options;
+    BootConfig _boot_config;
     ConsoleServer *_console_server;
+    Filesystem *_data_filesystem;
     File *_last_log;
     ResourceLoader *_resource_loader;
     ResourceManager *_resource_manager;
+    BgfxAllocator *_bgfx_allocator;
+    BgfxCallback *_bgfx_callback;
     LuaEnvironment *_lua_environment;
+    Display *_display;
+    Window *_window;
 
     u16 _width;
     u16 _height;
